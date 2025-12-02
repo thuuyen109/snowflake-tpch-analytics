@@ -1,0 +1,6 @@
+# trigger on pull requests to main branch
+# name: CI Validation
+# run validation on staging_db
+
+--------------------
+# TBU

@@ -1,0 +1,6 @@
+# trigger on push on main branch
+# name: CD Deploy Prod
+# deploy to production_db
+
+--------------------
+# TBU
