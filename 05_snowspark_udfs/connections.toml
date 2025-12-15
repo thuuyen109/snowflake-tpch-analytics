@@ -1,0 +1,8 @@
+[snowflake_connection]
+account = "TIQMVMP-****"
+user = "*****"
+password = "******"
+role = "ACCOUNTADMIN"
+warehouse = "COMPUTE_WH"
+database = "TPCH_ANALYTICS_DB"
+schema = "ANALYTICS"
