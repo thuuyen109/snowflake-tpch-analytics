@@ -68,6 +68,12 @@ Each module includes SQL scripts and/or notebooks used to validate logic and res
 
 ---
 
+## Result
+
+TBU
+
+---
+
 ## Snowflake Features Explored
 
 This project covers a wide range of Snowflake platform features:
@@ -108,7 +114,7 @@ Security and governance are treated as **first-class concerns**, not afterthough
 
 ---
 
-## 🧠 Key Learnings
+## Key Learnings
 
 * Snowflake should be treated as a **data platform**, not only a SQL engine
 * Native Snowflake features can replace many external tools when used correctly
