@@ -1,11 +1,10 @@
--- Đặt context trước khi tạo UDF (Tuỳ chọn, nhưng nên làm)
 USE ROLE TPCH_DEVELOPER;
 USE DATABASE TPCH_ANALYTICS_DB;
 USE SCHEMA UDFS;
 
 ----------------------------------------------------------------------
--- UDF 1: Phân loại khách hàng theo Doanh thu (Customer Segmentation by Revenue)
--- Dùng hàm này để gán phân khúc (Tier) dựa trên tổng doanh thu (total_revenue).
+-- UDF 1: Customer Segmentation by Revenue
+-- Use this function to assign a tier based on total revenue.
 ----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION UDFS.CLASSIFY_CUSTOMER_REVENUE(
     TOTAL_SPENT FLOAT
@@ -24,9 +23,9 @@ $$
 ;
 
 ----------------------------------------------------------------------
--- UDF 2: Validate Phone Number (Sử dụng REGEXP_LIKE)
--- Kiểm tra định dạng số điện thoại (Ví dụ: 10 chữ số, có thể bắt đầu bằng +, v.v.)
--- Ví dụ này kiểm tra định dạng cơ bản: chỉ chứa số, độ dài 10-15 ký tự.
+-- UDF 2: Validate Phone Number (Using REGEXP_LIKE)
+-- Check phone number format (Ex: 10 digits, can start with +, etc.)
+-- This example checks the basic format: contains only numbers, 10-15 characters.
 ----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION UDFS.VALIDATE_PHONE_NUMBER(
     PHONE_NUMBER VARCHAR
@@ -41,8 +40,8 @@ $$
 ;
 
 ----------------------------------------------------------------------
--- UDF 3: Validate Email (Sử dụng REGEXP_LIKE)
--- Kiểm tra định dạng email cơ bản: chứa @, không có khoảng trắng, có ít nhất một dấu . sau @
+-- UDF 3: Validate Email (Using REGEXP_LIKE)
+-- Check basic email formatting: contains @, no spaces, at least one . after @
 ----------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION UDFS.VALIDATE_EMAIL(
     EMAIL VARCHAR
