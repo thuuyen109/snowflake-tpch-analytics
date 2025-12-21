@@ -33,7 +33,7 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 
 ```mermaid
 flowchart TD
-    A["Data Files\norders.csv, customers.csv, lineitem.csv"]
+    A["Data Files \n orders.csv, customers.csv, lineitem.csv"]
     B["Stage\nTPCH_DATA_STAGE"]
 
     subgraph BRONZE["Bronze Layer (Staging Schema)"]
