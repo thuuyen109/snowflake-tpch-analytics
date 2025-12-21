@@ -31,26 +31,22 @@ BEGIN
             O_ORDERKEY,
             O_CUSTKEY,
             O_ORDERSTATUS,
-            CASE O_ORDERSTATUS
-                WHEN 'F' THEN 'FINISHED'
-                WHEN 'O' THEN 'OPEN'
-                WHEN 'P' THEN 'PENDING'
-                ELSE 'UNKNOWN'
-            END AS O_ORDERSTATUS_DESC,
+
+            UDFS.CLASSIFY_ORDERSTATUS(
+                O_ORDERSTATUS
+            ) AS O_ORDERSTATUS_DESC,
+            
             O_TOTALPRICE,
             O_ORDERDATE,
             YEAR(O_ORDERDATE) AS O_ORDER_YEAR,
             MONTH(O_ORDERDATE) AS O_ORDER_MONTH,
             QUARTER(O_ORDERDATE) AS O_ORDER_QUARTER,
             O_ORDERPRIORITY,
-            CASE 
-                WHEN O_ORDERPRIORITY LIKE '1-URGENT%' THEN 1
-                WHEN O_ORDERPRIORITY LIKE '2-HIGH%' THEN 2
-                WHEN O_ORDERPRIORITY LIKE '3-MEDIUM%' THEN 3
-                WHEN O_ORDERPRIORITY LIKE '4-NOT SPECIFIED%' THEN 4
-                WHEN O_ORDERPRIORITY LIKE '5-LOW%' THEN 5
-                ELSE 9
-            END AS O_PRIORITY_RANK,
+            
+            UDFS.CLASSIFY_PRIORITY_RANK(
+                O_ORDERPRIORITY
+            ) AS O_PRIORITY_RANK,    
+            
             O_CLERK,
             TRY_CAST(REGEXP_SUBSTR(O_CLERK, '[0-9]+') AS NUMBER) AS O_CLERK_ID,
             O_SHIPPRIORITY,

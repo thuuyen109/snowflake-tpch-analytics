@@ -22,6 +22,9 @@ $$
 $$
 ;
 
+
+
+
 ----------------------------------------------------------------------
 -- UDF 2: Validate Phone Number (Using REGEXP_LIKE)
 -- Check phone number format (Ex: 10 digits, can start with +, etc.)
