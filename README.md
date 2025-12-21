@@ -128,8 +128,8 @@ Each module includes SQL scripts and/or notebooks used to validate logic and res
 
 ## Result
 
-Video Link: TBU
-See the result temporarily in pictures captured in each section (aka each folder)
+- Video Link: TBU
+- See the result temporarily in pictures captured in each section (aka each folder)
 
 ---
 
