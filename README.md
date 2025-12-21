@@ -33,34 +33,34 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 
 ```mermaid
 flowchart TD
-    A[📁 Data Files<br/>(orders.csv, customers.csv, lineitem.csv...)]
-    B[🗄️ Stage<br/>TPCH_DATA_STAGE]
-    
-    subgraph BRONZE["🟤 Bronze Layer (Staging Schema)"]
-        B1[ORDERS]
-        B2[CUSTOMER]
-        B3[LINEITEM]
-        B4[PART / SUPPLIER / PARTSUPP]
-        B5[NATION / REGION]
+    A["Data Files\norders.csv, customers.csv, lineitem.csv"]
+    B["Stage\nTPCH_DATA_STAGE"]
+
+    subgraph BRONZE["Bronze Layer (Staging Schema)"]
+        B1["ORDERS"]
+        B2["CUSTOMER"]
+        B3["LINEITEM"]
+        B4["PART / SUPPLIER / PARTSUPP"]
+        B5["NATION / REGION"]
     end
 
-    C[📊 Streams<br/>CDC Capture]
-    D[🔄 Tasks<br/>TASK_BRONZE_TO_SILVER_*]
+    C["Streams\nCDC Capture"]
+    D["Tasks\nTASK_BRONZE_TO_SILVER_*"]
 
-    subgraph SILVER["🥈 Silver Layer (Cleaned & Enriched)"]
-        S1[ORDERS_SILVER<br/>+ status desc<br/>+ date parts<br/>+ clerk ID]
-        S2[CUSTOMER_SILVER<br/>+ nation name<br/>+ region name]
-        S3[LINEITEM_SILVER<br/>+ part name<br/>+ supplier<br/>+ net price]
+    subgraph SILVER["Silver Layer (Cleaned & Enriched)"]
+        S1["ORDERS_SILVER\nstatus desc, date parts, clerk ID"]
+        S2["CUSTOMER_SILVER\nnation name, region name"]
+        S3["LINEITEM_SILVER\npart name, supplier, net price"]
     end
 
-    E[🔄 Tasks<br/>TASK_SILVER_TO_GOLD_*]
+    E["Tasks\nTASK_SILVER_TO_GOLD_*"]
 
-    subgraph GOLD["🥇 Gold Layer (Business Metrics)"]
-        G1[CUSTOMER_LTV]
-        G2[DAILY_SALES_SUMMARY]
+    subgraph GOLD["Gold Layer (Business Metrics)"]
+        G1["CUSTOMER_LTV"]
+        G2["DAILY_SALES_SUMMARY"]
     end
 
-    F[📊 Reports & Dashboards]
+    F["Reports & Dashboards"]
 
     A -->|Upload Files| B
     B -->|COPY INTO / Snowpipe| B1
@@ -87,6 +87,7 @@ flowchart TD
 
     G1 --> F
     G2 --> F
+
 
 ```
 
@@ -198,5 +199,5 @@ Security and governance are treated as **first-class concerns**, not afterthough
 
 
 ---
-### Resources:
+### Resources
 - Learn more about Git Integration [in the link](https://www.youtube.com/watch?v=4GOa1eUccmQ&t=27s)
