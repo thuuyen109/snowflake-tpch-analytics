@@ -36,7 +36,7 @@ flowchart TD
     A["Data Files"]
     B["Stage - TPCH_DATA_STAGE"]
 
-    subgraph BRONZE["Bronze Layer (Staging Schema)"]
+    subgraph BRONZE["Bronze (Staging Schema)"]
         B1["ORDERS"]
         B2["CUSTOMER"]
         B3["LINEITEM"]
@@ -47,7 +47,7 @@ flowchart TD
     C["Streams - CDC Capture"]
     D["Tasks - TASK_BRONZE_TO_SILVER"]
 
-    subgraph SILVER["Silver Layer (Cleaned & Enriched)"]
+    subgraph SILVER["Silver (Analytics Schema)"]
         S1["ORDERS_SILVER"]
         S2["CUSTOMER_SILVER"]
         S3["LINEITEM_SILVER"]
@@ -55,7 +55,7 @@ flowchart TD
 
     E["Tasks - TASK_SILVER_TO_GOLD"]
 
-    subgraph GOLD["Gold Layer (Business Metrics)"]
+    subgraph GOLD["Gold (Reports Schema)"]
         G1["CUSTOMER_LTV"]
         G2["DAILY_SALES_SUMMARY"]
     end
