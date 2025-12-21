@@ -63,7 +63,6 @@ flowchart TD
     F["Reports & Dashboards"]
 
     A -->|Upload Files| B
-    B -->|COPY INTO / Snowpipe| subgraph BRONZE["Bronze Layer (Staging Schema)"]
     B -->|COPY INTO / Snowpipe| B1
     B -->|COPY INTO / Snowpipe| B2
     B -->|COPY INTO / Snowpipe| B3
@@ -73,6 +72,8 @@ flowchart TD
     B1 --> C
     B2 --> C
     B3 --> C
+    B4 --> C
+    B5 --> C
 
     C -->|Trigger| D
     D -->|Transform via Stored Procedures| S1
