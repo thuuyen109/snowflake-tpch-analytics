@@ -66,8 +66,6 @@ flowchart TD
     B -->|COPY INTO / Snowpipe| B1
     B -->|COPY INTO / Snowpipe| B2
     B -->|COPY INTO / Snowpipe| B3
-    B -->|COPY INTO / Snowpipe| B4
-    B -->|COPY INTO / Snowpipe| B5
 
     B1 --> C
     B2 --> C
@@ -188,6 +186,7 @@ Security and governance are treated as **first-class concerns**, not afterthough
 ---
 
 ### Improvements
+
 
 - **Event-driven ingestion with Snowpipe**
   
