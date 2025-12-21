@@ -66,14 +66,10 @@ flowchart TD
     B -->|COPY INTO / Snowpipe| B1
     B -->|COPY INTO / Snowpipe| B2
     B -->|COPY INTO / Snowpipe| B3
-    B -->|COPY INTO / Snowpipe| B4
-    B -->|COPY INTO / Snowpipe| B5
 
     B1 --> C
     B2 --> C
     B3 --> C
-    B4 --> C
-    B5 --> C
 
     C -->|Trigger| D
     D -->|Transform via Stored Procedures| S1
@@ -188,6 +184,7 @@ Security and governance are treated as **first-class concerns**, not afterthough
 ---
 
 ### Improvements
+
 
 - **Event-driven ingestion with Snowpipe**
   
