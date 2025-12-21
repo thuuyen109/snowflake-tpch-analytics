@@ -33,8 +33,8 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 
 ```mermaid
 flowchart TD
-    A["Data Files \n orders.csv, customers.csv, lineitem.csv"]
-    B["Stage\nTPCH_DATA_STAGE"]
+    A["Data Files"]
+    B["Stage - TPCH_DATA_STAGE"]
 
     subgraph BRONZE["Bronze Layer (Staging Schema)"]
         B1["ORDERS"]
@@ -44,16 +44,16 @@ flowchart TD
         B5["NATION / REGION"]
     end
 
-    C["Streams\nCDC Capture"]
-    D["Tasks\nTASK_BRONZE_TO_SILVER_*"]
+    C["Streams - CDC Capture"]
+    D["Tasks - TASK_BRONZE_TO_SILVER"]
 
     subgraph SILVER["Silver Layer (Cleaned & Enriched)"]
-        S1["ORDERS_SILVER\nstatus desc, date parts, clerk ID"]
-        S2["CUSTOMER_SILVER\nnation name, region name"]
-        S3["LINEITEM_SILVER\npart name, supplier, net price"]
+        S1["ORDERS_SILVER"]
+        S2["CUSTOMER_SILVER"]
+        S3["LINEITEM_SILVER"]
     end
 
-    E["Tasks\nTASK_SILVER_TO_GOLD_*"]
+    E["Tasks - TASK_SILVER_TO_GOLD"]
 
     subgraph GOLD["Gold Layer (Business Metrics)"]
         G1["CUSTOMER_LTV"]
