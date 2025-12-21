@@ -70,8 +70,6 @@ flowchart TD
     B1 --> C
     B2 --> C
     B3 --> C
-    B4 --> C
-    B5 --> C
 
     C -->|Trigger| D
     D -->|Transform via Stored Procedures| S1
