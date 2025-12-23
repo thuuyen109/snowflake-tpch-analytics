@@ -91,11 +91,7 @@ flowchart TD
 
 
 
-```excalidraw
-
-dataflow.excalidraw
-
-```
+![My figure](dataflow.excalidraw.png)
 
 
 
