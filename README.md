@@ -31,63 +31,9 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 * Clear separation between ingestion, transformation, analytics, and governance
 * Modular, script-based implementation for reproducibility
 
-```mermaid
-flowchart TD
-    A["Data Files"]
-    B["Stage - TPCH_DATA_STAGE"]
-
-    subgraph BRONZE["Bronze (Staging Schema)"]
-        B1["ORDERS"]
-        B2["CUSTOMER"]
-        B3["LINEITEM"]
-        B4["PART / SUPPLIER / PARTSUPP"]
-        B5["NATION / REGION"]
-    end
-
-    C["Streams - CDC Capture"]
-    D["Tasks - TASK_BRONZE_TO_SILVER"]
-
-    subgraph SILVER["Silver (Analytics Schema)"]
-        S1["ORDERS_SILVER"]
-        S2["CUSTOMER_SILVER"]
-        S3["LINEITEM_SILVER"]
-    end
-
-    E["Tasks - TASK_SILVER_TO_GOLD"]
-
-    subgraph GOLD["Gold (Reports Schema)"]
-        G1["CUSTOMER_LTV"]
-        G2["DAILY_SALES_SUMMARY"]
-    end
-
-    F["Reports & Dashboards"]
-
-    A -->|Upload Files| B
-    B -->|COPY INTO / Snowpipe| B1
-    B -->|COPY INTO / Snowpipe| B2
-    B -->|COPY INTO / Snowpipe| B3
-
-    B1 --> C
-    B2 --> C
-    B3 --> C
-
-    C -->|Trigger| D
-    D -->|Transform via Stored Procedures| S1
-    D -->|Transform via Stored Procedures| S2
-    D -->|Transform via Stored Procedures| S3
-
-    S1 --> E
-    S2 --> E
-    S3 --> E
-
-    E -->|Aggregate Metrics| G1
-    E -->|Aggregate Metrics| G2
-
-    G1 --> F
-    G2 --> F
 
 
-```
+![Diagrams](./.excalidraw.svg)
 
 ---
 
