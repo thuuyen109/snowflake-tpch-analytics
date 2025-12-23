@@ -33,7 +33,7 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 
 
 
-![Diagrams](./e.excalidraw.svg)
+![Diagrams](./.excalidraw.svg)
 
 ---
 
