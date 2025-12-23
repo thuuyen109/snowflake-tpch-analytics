@@ -32,7 +32,7 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 * Modular, script-based implementation for reproducibility
 
 
-![Diagrams](./dataflow.excalidraw)
+![Diagrams](./dataflow.excalidraw.svg)
 
 
 ---
