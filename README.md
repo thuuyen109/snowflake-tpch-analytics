@@ -33,7 +33,7 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 
 * **Staging layer**: raw ingestion and schema alignment
 * **Silver layer**: cleaned, conformed, business-ready data
-* **Gold layer**: analytics- and reporting-focused tables
+* **Gold layer**: analytics/reporting-focused tables
 
 ```bash
 TPCH_ANALYTICS_DB ❄️
@@ -111,7 +111,7 @@ TPCH_ANALYTICS_DB ❄️
 └── README.md
 ```
 
-Each module includes SQL scripts and/or notebooks used to validate logic and results.
+Each module includes SQL scripts, notebooks used to validate logic and results.
 
 ---
 
