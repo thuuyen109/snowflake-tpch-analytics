@@ -29,11 +29,11 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 ![Diagrams](./.excalidraw.svg)
 
 
-**Architecture pattern:** Medallion (Staging → Silver → Gold)
+**Architecture pattern:** Medallion (Bronze → Silver → Gold)
 
-* **Staging layer**: raw ingestion and schema alignment
-* **Silver layer**: cleaned, conformed, business-ready data
-* **Gold layer**: analytics/reporting-focused tables
+* **Bronze layer - Staging schema**: raw ingestion and schema alignment
+* **Silver layer - Analytics schema**: cleaned, conformed, business-ready data
+* **Gold layer - Reports schema**: analytics/reporting-focused tables
 
 ```bash
 TPCH_ANALYTICS_DB ❄️
