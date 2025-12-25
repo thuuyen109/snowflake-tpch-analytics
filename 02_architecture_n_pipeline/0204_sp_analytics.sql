@@ -19,7 +19,7 @@ BEGIN
     -- Check if stream has data before processing
     LET pending_count NUMBER := (SELECT COUNT(*) FROM CONTROL.STREAM_ORDERS);
     
-    IF (pending_count = 0) THEN
+    IF (SYSTEM$STREAM_HAS_DATA('CONTROL.STREAM_ORDERS') = FALSE) THEN
         RETURN 'No changes detected in stream. Nothing to process.';
     END IF;
     
@@ -118,7 +118,7 @@ BEGIN
     -- Check if stream has data before processing
     LET pending_count NUMBER := (SELECT COUNT(*) FROM CONTROL.STREAM_CUSTOMER);
     
-    IF (pending_count = 0) THEN
+    IF (SYSTEM$STREAM_HAS_DATA('CONTROL.STREAM_CUSTOMER') = FALSE) THEN
         RETURN 'No changes detected in stream. Nothing to process.';
     END IF;
     
@@ -220,7 +220,7 @@ BEGIN
     -- Check if stream has data before processing
     LET pending_count NUMBER := (SELECT COUNT(*) FROM CONTROL.STREAM_LINEITEM);
     
-    IF (pending_count = 0) THEN
+    IF (SYSTEM$STREAM_HAS_DATA('CONTROL.STREAM_LINEITEM') = FALSE) THEN
         RETURN 'No changes detected in stream. Nothing to process.';
     END IF;
     
@@ -361,23 +361,25 @@ $$;
 
 CREATE OR REPLACE TASK TPCH_ANALYTICS_DB.CONTROL.TASK_CDC_MERGE_ORDERS
     WAREHOUSE = COMPUTE_WH
-    -- SCHEDULE = 'USING CRON 05 04 * * * Asia/Ho_Chi_Minh' 
-    -- Or use CRON: SCHEDULE = '5 MINUTE'
+    -- SCHEDULE = 'USING CRON 05 02 * * * Asia/Ho_Chi_Minh' 
+    -- SCHEDULE = '5 MINUTE' -- for production
     AFTER TPCH_ANALYTICS_DB.CONTROL.TASK_REFRESH_PIPE
-    WHEN SYSTEM$STREAM_HAS_DATA('STREAM_RAW_ORDERS_LANDING')  -- Only run if stream has data
+    WHEN SYSTEM$STREAM_HAS_DATA('CONTROL.STREAM_ORDERS')  -- Only run if stream has data
 AS
     CALL CONTROL.MERGE_ORDERS_CDC();
 
 CREATE OR REPLACE TASK TPCH_ANALYTICS_DB.CONTROL.TASK_CDC_MERGE_CUSTOMER
     WAREHOUSE = COMPUTE_WH
+    -- SCHEDULE = '5 MINUTE' -- for production
     AFTER TPCH_ANALYTICS_DB.CONTROL.TASK_REFRESH_PIPE
-    WHEN SYSTEM$STREAM_HAS_DATA('STREAM_RAW_ORDERS_LANDING')  -- Only run if stream has data
+    WHEN SYSTEM$STREAM_HAS_DATA('CONTROL.STREAM_CUSTOMER')  -- Only run if stream has data
 AS
     CALL CONTROL.MERGE_CUSTOMER_CDC();
 
 CREATE OR REPLACE TASK TPCH_ANALYTICS_DB.CONTROL.TASK_CDC_MERGE_LINEITEM
     WAREHOUSE = COMPUTE_WH
+    -- SCHEDULE = '5 MINUTE' -- for production
     AFTER TPCH_ANALYTICS_DB.CONTROL.TASK_REFRESH_PIPE
-    WHEN SYSTEM$STREAM_HAS_DATA('STREAM_RAW_ORDERS_LANDING')  -- Only run if stream has data
+    WHEN SYSTEM$STREAM_HAS_DATA('CONTROL.STREAM_LINEITEM')  -- Only run if stream has data
 AS
     CALL CONTROL.MERGE_LINEITEM_CDC();

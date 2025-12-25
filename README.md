@@ -19,12 +19,6 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 
 ## Architecture Overview
 
-**Architecture pattern:** Medallion (Staging → Silver → Gold)
-
-* **Staging layer**: raw ingestion and schema alignment
-* **Silver layer**: cleaned, conformed, business-ready data
-* **Gold layer**: analytics- and reporting-focused tables
-
 **Approach:**
 
 * ELT using Snowflake compute
@@ -32,8 +26,57 @@ The goal is to understand Snowflake **beyond SQL**, from architecture and govern
 * Modular, script-based implementation for reproducibility
 
 
-
 ![Diagrams](./.excalidraw.svg)
+
+
+**Architecture pattern:** Medallion (Staging → Silver → Gold)
+
+* **Staging layer**: raw ingestion and schema alignment
+* **Silver layer**: cleaned, conformed, business-ready data
+* **Gold layer**: analytics- and reporting-focused tables
+
+```bash
+TPCH_ANALYTICS_DB ❄️
+|
+├── 📁 STAGING (Landing & Raw Layer)
+│   ├── 📊 Tables
+│   ├── 📥 Stages
+│   └── 🛠️ Git Repositories
+|
+├── 📁 ANALYTICS (Data Modeling Layer)
+│   └── 📊 Tables
+│       ├── CUSTOMER_RFM_SCORES
+│       ├── CUSTOMER_SENSITIVE
+│       ├── CUSTOMER_SILVER
+│       ├── LINEITEM_SILVER
+│       └── ORDERS_SILVER
+|
+├── 📁 REPORTS (Presentation Layer)
+│   ├── 📊 Tables
+│   │   ├── CUSTOMER_LTV
+│   │   └── DAILY_SALES_SUMMARY
+│   └── 👁️ Views
+│       ├── VW_CUSTOMER_PUBLIC
+│       └── VW_CUSTOMER_SUMMARY
+|
+├── 📁 CONTROL (Orchestration & CDC)
+│   ├── ⛓️ Pipes
+│   ├── 🌊 Streams
+│   ├── ⏱️ Tasks
+│   └── ⚙️ Procedures
+|
+├── 📁 UDFS (Custom Logic)
+│   └── 🛠️ Functions
+│       ├── CLASSIFY_CUSTOMER_REVENUE(FLOAT)
+│       ├── CLASSIFY_ORDERSTATUS(VARCHAR)
+│       ├── CLASSIFY_PRIORITY_RANK(VARCHAR)
+│       ├── VALIDATE_EMAIL(VARCHAR)
+│       └── VALIDATE_PHONE_NUMBER(VARCHAR)
+|
+├── 📁 PUBLIC
+└── 📁 INFORMATION_SCHEMA
+
+```
 
 ---
 
