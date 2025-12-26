@@ -117,8 +117,8 @@ Each module includes SQL scripts, notebooks used to validate logic and results.
 
 ## Result
 
-- Video Link: TBU
 - See the result temporarily in pictures captured in each section (aka each folder)
+- Demo Video [![in the link](img.youtube.com)](https://www.youtube.com/watch?v=4dvsNL_09K8)
 
 ---
 

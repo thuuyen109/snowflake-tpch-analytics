@@ -63,7 +63,7 @@ df_pandas['MONTH'] = pd.to_datetime(df_pandas['MONTH'])
 fig, ax1 = plt.subplots(figsize=(12, 6))
 
 # --- Axis main Y (Column Chart for Doanh Thu) ---
-color_revenue = 'tab:blue'
+color_revenue = '#FFA240'
 ax1.set_xlabel('Tháng')
 ax1.set_ylabel('Tổng Doanh Thu (TOTAL_REVENUE)', color=color_revenue)
 
@@ -82,7 +82,7 @@ ax1.patch.set_visible(False)
 
 # 2. Draw(ax2) for Line Chart
 ax2 = ax1.twinx()  
-color_avg = 'tab:red'
+color_avg = '#0F2854'
 ax2.set_ylabel('Giá Trị Đơn Hàng TB (AVG_ORDER_VALUE)', color=color_avg)  
 
 # Draw (Line Chart)
@@ -97,7 +97,7 @@ ax2.plot(
 )
 ax2.tick_params(axis='y', labelcolor=color_avg)
 
-plt.title('Doanh Thu Hàng Tháng (Cột) và Giá Trị Đơn Hàng TB (Đường)')
+plt.title('Doanh Thu Hàng Tháng (Column) và Giá Trị Đơn Hàng TB (Line)')
 plt.gcf().autofmt_xdate()
 
 plt.show()
