@@ -120,7 +120,7 @@ Each module includes SQL scripts, notebooks used to validate logic and results.
 - See the result temporarily in pictures captured in each section (aka each folder)
 - Demo, watch the video 👇
 
-[![Watch the video](https://img.youtube.com/vi/4dvsNL_09K8/hqdefault.jpg)](https://www.youtube.com/watch?v=4dvsNL_09K8)
+    [![Watch the video](https://img.youtube.com/vi/4dvsNL_09K8/hqdefault.jpg)](https://www.youtube.com/watch?v=4dvsNL_09K8)
 
 ---
 
